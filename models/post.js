@@ -1,13 +1,23 @@
 const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' }, // fixed "type"
-  date: {
-    type: Date,
-    default: Date.now
-  },
-  content: { type: String },
-  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }] // lowercase "likes" is cleaner
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    content: {
+        type: String
+    },
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
 });
 
-module.exports = mongoose.model('Post', postSchema);
+module.exports = mongoose.model('post', postSchema);
